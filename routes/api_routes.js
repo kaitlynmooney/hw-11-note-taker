@@ -4,20 +4,20 @@ const data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
 
 module.exports = function(app) {
 
-    app.get("/api/notes", function(req, res) {
+    app.get("/notes", function(req, res) {
        
         res.json(data);
 
     });
 
-    app.get("/api/notes/:id", function(req, res) {
+    app.get("/notes/:id", function(req, res) {
 
         res.json(data[Number(req.params.id)]);
 
     });
 
 
-    app.post("/api/notes", function(req, res) {
+    app.post("/notes", function(req, res) {
 
         const newNote = req.body;
         const uniqueId = (data.length).toString();
@@ -34,7 +34,7 @@ module.exports = function(app) {
     });
 
     
-    app.delete("/api/notes/:id", function(req, res) {
+    app.delete("/notes/:id", function(req, res) {
 
         const noteId = req.params.id;
         const newId = 0;
